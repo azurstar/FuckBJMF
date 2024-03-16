@@ -40,6 +40,9 @@ Users: #  用户列表
 
 SearchTime: 60 # 获取签到任务的时间间隔(单位:秒)
 ```
+# 获取classID和cookie
+![039f37ceeffaf8153097b1fdefbc2770](https://github.com/azurstar/FuckBJMF/assets/91844313/0f491389-9f03-4f0c-a3a2-9a23d35f609d)
+
 # 已解决
 - GPS签到
 - 扫码签到
