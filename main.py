@@ -14,7 +14,7 @@ def printTimeMsg(msg: str):
     print(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
 
-def thread(name: str, cron: str, event: str, classID: str, bjmf: BJMF, localtion: list):
+def thread(name: str, cron: str, event: str, classID, bjmf: BJMF, localtion: list):
     printTimeMsg(f"{name}({classID}) {event} 开始签到任务监测")
     while True:
         time.sleep(getSleepTime(cron))
