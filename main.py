@@ -14,16 +14,16 @@ def printTimeMsg(msg: str):
     print(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
 
 
-def thread(name: str, cron: str, event: str, bjmf: BJMF, localtion: list):
-    printTimeMsg(f"{name} {event} 开始签到任务监测")
+def thread(name: str, cron: str, event: str, classID: str, bjmf: BJMF, localtion: list):
+    printTimeMsg(f"{name}({classID}) {event} 开始签到任务监测")
     while True:
         time.sleep(getSleepTime(cron))
         signID = bjmf.getSignID()
         if signID:
-            printTimeMsg(f"{name} {event} 发现签到任务 {signID}")
+            printTimeMsg(f"{name}({classID}) {event} 发现签到任务 {signID}")
         for id in signID:
             msg = bjmf.signGPS_QR(id, localtion)
-            printTimeMsg(f"{name} {event} {id}: {msg}")
+            printTimeMsg(f"{name}({classID}) {event} {id}: {msg}")
         time.sleep(SearchTime)
 
 
@@ -39,7 +39,7 @@ def main():
         for event in events:
             act = Action[event]
             localtion, cron = Localtion[act["localtion"]], act["cron"]
-            threading.Thread(target=thread, args=(name, cron, event, bjmf, localtion)).start()
+            threading.Thread(target=thread, args=(name, cron, event, classID, bjmf, localtion)).start()
             time.sleep(0.1)
 
 
