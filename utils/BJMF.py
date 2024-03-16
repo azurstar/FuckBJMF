@@ -26,7 +26,8 @@ class BJMF:
         url = f"http://{self.server}/student/course/{self.classID}/punchs"
         r = requests.get(url, headers=self.headers)
         soup = BeautifulSoup(r.text, "html.parser").find_all("div", class_="card-body")
-        signID = [re.compile(r'punchcard_(\d+)').findall(str(i))[0] for i in soup]
+        signID = [re.compile(r'(punchcard|punch_pwd_frm)_(\d+)').findall(str(i)) for i in soup if len(i) >= 1]
+        signID = [i[0][1] for i in signID if len(i) >= 1]
         for id in signID.copy():
             for s in soup.copy():
                 if id in str(s) and "已签" in str(s):
