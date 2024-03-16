@@ -1,4 +1,4 @@
-import requests
+import requests, re
 from bs4 import BeautifulSoup
 
 
@@ -25,15 +25,16 @@ class BJMF:
     def getSignID(self):
         url = f"http://{self.server}/student/course/{self.classID}/punchs"
         r = requests.get(url, headers=self.headers)
-        soup = BeautifulSoup(r.text, "html.parser")
-        soup.findAll("div", "card")
-        signID = []
-        for i in soup.findAll("div", "card"):
-            try: signID.append(i.get("onclick")[10:-1:1])
-            except: pass
+        soup = BeautifulSoup(r.text, "html.parser").find_all("div", class_="card-body")
+        signID = [re.compile(r'punchcard_(\d+)').findall(str(i))[0] for i in soup]
+        for id in signID.copy():
+            for s in soup.copy():
+                if id in str(s) and "已签" in str(s):
+                    soup.remove(s)
+                    signID.remove(id)
         return signID
 
-    def signGPS(self, signID, location: list) -> bool:
+    def signGPS_QR(self, signID, location: list):
         url = f"http://{self.server}/student/punchs/course/{self.classID}/{signID}"
         data = {
             "id": signID,
@@ -44,5 +45,4 @@ class BJMF:
             "gps_addr": "",
         }
         r = requests.post(url, headers=self.headers, data=data)
-        print(r.text)
-        return "签到成功" in r.text
+        return BeautifulSoup(r.text, "html.parser").find("h1").text

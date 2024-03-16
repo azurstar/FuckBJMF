@@ -8,6 +8,7 @@ def load_config():
 
 config = load_config()
 
+SearchTime = config["SearchTime"]
 Users = config["Users"]
 Localtion = config["Localtion"]
 Action = config["Action"]

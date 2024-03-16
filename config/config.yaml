@@ -4,15 +4,15 @@ Localtion:
   一号教学楼: [1, 2, 3]
 
 Action:
-  - 早操签到:
-      location: 操场
-      cron: "0 0 7 * * *"
-  - 上课签到:
-      location: 一号教学楼
-      cron: "0 0 7 * * *"
-  - 晚自习签到:
-      location: 一号教学楼
-      cron: "0 0 7 * * *"
+  早操签到:
+    localtion: 操场
+    cron: "* * 7 * * *"
+  上课签到:
+    localtion: 一号教学楼
+    cron: "* * 8-17 * * *"
+  晚自习签到:
+    localtion: 一号教学楼
+    cron: "* * 19-20 * * *"
 
 Users:
   - name: 张三
@@ -27,3 +27,5 @@ Users:
     events:
       - 上课签到
       - 晚自习签到
+
+SearchTime: 60
