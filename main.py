@@ -22,7 +22,7 @@ def thread(name: str, cron: str, event: str, classID, bjmf: BJMF, localtion: lis
         if signID:
             printTimeMsg(f"{name}({classID}) {event} 发现签到任务 {signID}")
         for id in signID:
-            msg = bjmf.signGPS_QR(id, localtion)
+            msg = bjmf.sign(id, localtion)
             printTimeMsg(f"{name}({classID}) {event} {id}: {msg}")
         time.sleep(SearchTime)
 
@@ -77,8 +77,10 @@ def control():
         for localtion in Localtion:
             print(f"{list(Localtion.keys()).index(localtion)}: {localtion}")
         localtion = Localtion[list(Localtion.keys())[int(input("选择一个签到地点: "))]]
-        msg = bjmf.signGPS_QR(id, localtion)
+        pwd = input("输入签到密码(没有密码直接回车): ")
+        msg = bjmf.sign(id, localtion, pwd)
         printTimeMsg(f"{name}({classID}) {id}: {msg}")
+        input("按回车键继续...")
 
 
 if __name__ == "__main__":

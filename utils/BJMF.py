@@ -35,7 +35,7 @@ class BJMF:
                     signID.remove(id)
         return signID
 
-    def signGPS_QR(self, signID, location: list):
+    def sign(self, signID, location: list, pwd=""):
         url = f"http://{self.server}/student/punchs/course/{self.classID}/{signID}"
         data = {
             "id": signID,
@@ -44,6 +44,7 @@ class BJMF:
             "acc": location[2],  # 海拔
             "res": "",
             "gps_addr": "",
+            "pwd": pwd
         }
         r = requests.post(url, headers=self.headers, data=data)
         return BeautifulSoup(r.text, "html.parser").find("h1").text
