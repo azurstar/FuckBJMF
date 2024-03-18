@@ -1,12 +1,20 @@
 # FuckBJMF
 ## SO BJMF(班级魔方), FUCK YOU!
 我们导员最近在搞一些反人类的神秘集会，所以这个仓库就诞生了
+
+# 已实现
+- GPS签到
+- 扫码签到
+- 密码签到(仅手动)
+- 多用户
+
 # 使用
 - 安装依赖 `pip install -r requirements.txt`
 - [配置](#配置) `config/config.yaml`
 - 运行程序
   - 手动签到 `python3 main.py`
   - 自动签到 `python3 main.py run`
+
 # 配置
 ```yaml
 Localtion: # 位置信息
@@ -40,13 +48,8 @@ Users: #  用户列表
 
 SearchTime: 60 # 获取签到任务的时间间隔(单位:秒)
 ```
-# 获取classID和cookie
-<img src="https://github.com/azurstar/FuckBJMF/assets/91844313/0f491389-9f03-4f0c-a3a2-9a23d35f609d" width="400">
 
-# 已解决
-- GPS签到
-- 扫码签到
-- 密码签到(仅手动)
-- 多用户
-# 待解决
-- 完善README
+# 获取classID和cookie
+- 班级魔方尚未使用上先进的https仍然使用着http，所以可以在未配置证书的情况下直接使用httpcanary等手机抓包软件。在微信中打开班级魔方后，在抓包软件里面找到`k8n.cn`即可。
+
+<img src="https://github.com/azurstar/FuckBJMF/assets/91844313/0f491389-9f03-4f0c-a3a2-9a23d35f609d" width="400">
