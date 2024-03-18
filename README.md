@@ -25,6 +25,7 @@ Action: # 任务列表(用于自动签到)
   早操签到: # 任务名
     localtion: 操场 # 对应Localtion中的位置信息
     cron: "* 7 * * *" # cron表达式(若与当前时间匹配就会进行签到)
+    # 分 时 日 月 星期(croniter不支持秒级)
   上课签到:
     localtion: 一号教学楼
     cron: "* 8-17 * * *"
