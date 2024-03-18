@@ -16,13 +16,13 @@ Localtion: # 位置信息
 Action: # 任务列表(用于自动签到)
   早操签到: # 任务名
     localtion: 操场 # 对应Localtion中的位置信息
-    cron: "* * 7 * * *" # cron表达式(若与当前时间匹配就会进行签到)
+    cron: "* 7 * * *" # cron表达式(若与当前时间匹配就会进行签到)
   上课签到:
     localtion: 一号教学楼
-    cron: "* * 8-17 * * *"
+    cron: "* 8-17 * * *"
   晚自习签到:
     localtion: 一号教学楼
-    cron: "* * 19-20 * * *"
+    cron: "* 19-20 * * *"
 
 Users: #  用户列表
   - name: 张三 # 用户名(可自定义)

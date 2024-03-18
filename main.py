@@ -5,7 +5,7 @@ from utils import BJMF
 
 
 def getSleepTime(cron: str):
-    now = int(time.time())
+    now = int(time.time()) + 8 * 60 * 60  # croniter默认utc时间
     iter = croniter(cron, now)
     return iter.get_next() - now
 
@@ -39,12 +39,14 @@ def main():
         for event in events:
             act = Action[event]
             localtion, cron = Localtion[act["localtion"]], act["cron"]
-            threading.Thread(target=thread, args=(name, cron, event, classID, bjmf, localtion)).start()
+            threading.Thread(
+                target=thread, args=(name, cron, event, classID, bjmf, localtion)
+            ).start()
             time.sleep(0.1)
 
 
 def printBanner(msg="手动签到"):
-    print('\033c', end='')
+    print("\033c", end="")
     print(msg)
 
 
@@ -53,9 +55,10 @@ def control():
         printBanner()
         for user in Users:
             print(f"{Users.index(user)}.{user['name']}({user['classID']})")
-        print('-1.退出')
+        print("-1.退出")
         index = int(input("选择一个用户: "))
-        if index == -1: exit()
+        if index == -1:
+            exit()
         user = Users[index]
         name, cookie, classID = (
             user["name"],
