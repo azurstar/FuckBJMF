@@ -1,6 +1,6 @@
 from croniter import croniter
 import time, datetime, threading, sys
-from config import Users, Localtion, Action, SearchTime
+from config import Users, Localtion, Action, SearchTime, WriteLog
 from utils import BJMF
 
 
@@ -10,8 +10,16 @@ def getSleepTime(cron: str):
     return iter.get_next() - now
 
 
+def wirteLog(msg: str):
+    with open("run.log", "a", encoding="utf-8") as f:
+        f.write(msg + "\n")
+
+
 def printTimeMsg(msg: str):
-    print(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}")
+    s = f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
+    print(s)
+    if WriteLog:
+        wirteLog(s)
 
 
 def thread(name: str, cron: str, event: str, classID, bjmf: BJMF, localtion: list):
