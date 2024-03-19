@@ -48,6 +48,7 @@ Users: #  用户列表
       - 晚自习签到
 
 SearchTime: 60 # 获取签到任务的时间间隔(单位:秒)
+WriteLog: True # 是否输出日志
 ```
 
 # 获取classID和cookie
