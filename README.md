@@ -8,6 +8,9 @@
 - 密码签到(仅手动)
 - 多用户
 
+# 未实现
+- 区间随机定位(先记着，等想写了再写)
+
 # 使用
 - 安装依赖 `pip install -r requirements.txt`
 - [配置](#配置) `config/config.yaml`
