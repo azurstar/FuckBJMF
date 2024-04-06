@@ -1,15 +1,12 @@
-# FuckBJMF
-## SO BJMF(班级魔方), FUCK YOU!
+# SO BJMF, FUCK YOU!
 我们导员最近在搞一些反人类的神秘集会，所以这个仓库就诞生了
 
-# 已实现
-- GPS签到
-- 扫码签到
-- 密码签到(仅手动)
-- 多用户
-
-# 未实现
-- 区间随机定位(先记着，等想写了再写)
+# 功能
+- [x] GPS签到
+- [x] 扫码签到
+- [x] 密码签到(仅手动)
+- [x] 多用户
+- [x] 定位随机偏移
 
 # 使用
 - 安装依赖 `pip install -r requirements.txt`
@@ -52,6 +49,7 @@ Users: #  用户列表
 
 SearchTime: 60 # 获取签到任务的时间间隔(单位:秒)
 WriteLog: True # 是否输出日志
+Offset: 0.0005 # 经纬度偏移量(正实数)
 ```
 
 # 获取classID和cookie

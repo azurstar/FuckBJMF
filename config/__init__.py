@@ -1,4 +1,4 @@
-import yaml
+import yaml, random
 
 
 def load_config():
@@ -13,3 +13,4 @@ Users = config["Users"]
 Localtion = config["Localtion"]
 Action = config["Action"]
 WriteLog = config["WriteLog"]
+Offset = lambda: round(random.uniform(-config["Offset"], config["Offset"]), 5)
