@@ -49,7 +49,7 @@ Users: #  用户列表
 
 SearchTime: 60 # 获取签到任务的时间间隔(单位:秒)
 WriteLog: True # 是否输出日志
-Offset: 0.0005 # 经纬度偏移量(正实数)
+Offset: 0.0005 # 经纬度最大偏移量(正实数)
 ```
 
 # 获取classID和cookie
